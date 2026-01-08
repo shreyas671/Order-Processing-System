@@ -1,7 +1,7 @@
-import { type ICatelogRepository } from "../interface/catelogRepository.interface";
+import { type ICatalogRepository } from "../interface/catelogRepository.interface";
 import { Product } from "../models/product.model";
 
-export class CatelogRepository implements ICatelogRepository {
+export class CatelogRepository implements ICatalogRepository {
     update(data: Product): Promise<Product> {
         throw new Error("Method not implemented.");
     }
