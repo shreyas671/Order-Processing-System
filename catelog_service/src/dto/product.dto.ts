@@ -3,15 +3,26 @@ import { IsNotEmpty, IsNumber, IsString, Min } from "class-validator";
 export class CreateProductRequest {
   @IsString()
   @IsNotEmpty()
-  name: string | undefined;
+  name: string;
 
   @IsString()
-  description: string | undefined;
+  description: string;
 
   @IsNumber()
   @Min(1)
-  price: number | undefined;
+  price: number;
 
   @IsNumber()
-  stock: number | undefined;
+  stock: number;
+}
+
+export class UpdateProductRequest {
+  name?: string;
+
+  description?: string;
+
+  @Min(1)
+  price?: number;
+
+  stock?: number;
 }
