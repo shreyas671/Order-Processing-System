@@ -7,25 +7,24 @@ const router = express.Router();
 router.post(
   "/order",
   async (req: Request, res: Response, next: NextFunction) => {
+    // order create logic
 
-    //Order Create Logic
-
-    // Step 3: Publish the Message
+    // 3rd step: publish the message
     await MessageBroker.publish({
       topic: "OrderEvents",
       headers: { token: req.headers.authorization },
       event: OrderEvent.CREATE_ORDER,
       message: {
-        OrderId: 1,
+        orderId: 1,
         items: [
           {
             productId: 1,
-            quantity: 1
+            quantity: 1,
           },
           {
             productId: 2,
-            quantity: 2
-          }
+            quantity: 2,
+          },
         ],
       },
     });
