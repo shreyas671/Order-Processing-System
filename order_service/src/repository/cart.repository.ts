@@ -1,6 +1,6 @@
 import { DB } from "../db/db.connection";
 import { Cart, CartLineItem, cartLineItems, carts } from "../db/schema";
-import { CartWithLineItems } from "../dto/cartRequest.do";
+import { CartWithLineItems } from "../dto/cartRequest.dto";
 import { NotFoundError } from "../utils";
 import { eq } from "drizzle-orm";
 
@@ -78,7 +78,7 @@ const deleteCart = async (id: number): Promise<boolean> => {
 };
 
 const clearCartData = async (id: number): Promise<boolean> => {
-  await DB.delete(carts).where(eq(carts.id, id)).returning();
+  await DB.delete(carts).where(eq(carts.customerId, id)).returning();
   return true;
 };
 
